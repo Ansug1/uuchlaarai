@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Уучлаарай 💛</title>
+
+  <style>
+    :root {
+      --bg1: #ffe1ea;
+      --bg2: #ffc9dd;
+      --card-bg: rgba(255, 255, 255, 0.75);
+      --text: #5a2a3a;
+      --accent: #ff6f91;
+      --accent2: #ff9ecf;
+      --shadow: rgba(255, 111, 145, 0.35);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg1: #2a1620;
+        --bg2: #3a1f2c;
+        --card-bg: rgba(40, 20, 30, 0.75);
+        --text: #ffe1ea;
+        --accent: #ff9ecf;
+        --accent2: #ff6f91;
+        --shadow: rgba(0, 0, 0, 0.5);
+      }
+    }
+
+    :root[data-theme="dark"] {
+      --bg1: #2a1620;
+      --bg2: #3a1f2c;
+      --card-bg: rgba(40, 20, 30, 0.75);
+      --text: #ffe1ea;
+      --accent: #ff9ecf;
+      --accent2: #ff6f91;
+      --shadow: rgba(0, 0, 0, 0.5);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(
+        -45deg,
+        var(--bg1),
+        var(--bg2),
+        var(--accent2),
+        var(--bg1)
+      );
+      background-size: 400% 400%;
+      animation: gradientShift 12s ease infinite;
+      font-family: "Segoe UI", "Noto Sans Mongolian", Arial, sans-serif;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow-x: hidden;
+      position: relative;
+      padding: 20px;
+    }
+
+    @keyframes gradientShift {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    /* ✨ Sparkles */
+    .sparkle {
+      position: fixed;
+      pointer-events: none;
+      color: #fff8c9;
+      text-shadow:
+        0 0 6px #fff,
+        0 0 12px var(--accent);
+      animation: sparkleTwinkle 1.8s ease-in-out infinite;
+      z-index: 0;
+    }
+
+    @keyframes sparkleTwinkle {
+      0%,
+      100% {
+        opacity: 0;
+        transform: scale(0.4) rotate(0deg);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.1) rotate(90deg);
+      }
+    }
+
+    /* 🎵 Music button */
+    .music-toggle {
+      position: fixed;
+      top: 18px;
+      right: 18px;
+      z-index: 2;
+      background: var(--card-bg);
+      backdrop-filter: blur(8px);
+      border: none;
+      border-radius: 50%;
+      width: 52px;
+      height: 52px;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 8px 20px var(--shadow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s ease;
+    }
+
+    .music-toggle:hover {
+      transform: scale(1.08);
+    }
+
+    .music-toggle.playing {
+      animation: pulseGlow 1.4s ease-in-out infinite;
+    }
+
+    @keyframes pulseGlow {
+      0%,
+      100% {
+        box-shadow: 0 8px 20px var(--shadow);
+      }
+
+      50% {
+        box-shadow: 0 8px 32px var(--accent);
+      }
+    }
+
+    /* 💕 Floating hearts */
+    .heart {
+      position: fixed;
+      top: 100%;
+      font-size: 24px;
+      color: var(--accent);
+      opacity: 0.8;
+      pointer-events: none;
+      animation: floatUp linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.9;
+      }
+
+      100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* 💌 Main card */
+    .card {
+      position: relative;
+      z-index: 1;
+      max-width: 480px;
+      width: 100%;
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border-radius: 28px;
+      padding: 44px 32px;
+      text-align: center;
+      box-shadow: 0 20px 50px var(--shadow);
+      animation: popIn 0.8s ease;
+    }
+
+    @keyframes popIn {
+      0% {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    /* 🥺 Emoji */
+    .emoji {
+      font-size: 60px;
+      animation: wiggle 2s ease-in-out infinite;
+      display: inline-block;
+    }
+
+    @keyframes wiggle {
+      0%,
+      100% {
+        transform: rotate(-8deg);
+      }
+
+      50% {
+        transform: rotate(8deg);
+      }
+    }
+
+    h1 {
+      font-size: 2.1rem;
+      margin: 14px 0 8px;
+      color: var(--accent);
+      letter-spacing: 0.5px;
+      text-shadow: 0 0 16px var(--shadow);
+      animation: titleGlow 3s ease-in-out infinite;
+    }
+
+    @keyframes titleGlow {
+      0%,
+      100% {
+        text-shadow: 0 0 10px var(--shadow);
+      }
+
+      50% {
+        text-shadow:
+          0 0 26px var(--accent),
+          0 0 6px #fff8;
+      }
+    }
+
+    p {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin: 16px 0;
+    }
+
+    /* 💛 Message box */
+    .msg-box {
+      background: rgba(255, 255, 255, 0.4);
+      border-radius: 16px;
+      padding: 16px 20px;
+      margin: 20px 0;
+      font-style: italic;
+      line-height: 1.6;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .msg-box {
+        background: rgba(255, 255, 255, 0.08);
+      }
+    }
+
+    :root[data-theme="dark"] .msg-box {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    /* 💕 Button */
+    button {
+      background: linear-gradient(
+        135deg,
+        var(--accent),
+        var(--accent2)
+      );
+      border: none;
+      color: #fff;
+      font-size: 1.05rem;
+      font-weight: 600;
+      padding: 14px 30px;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 10px 25px var(--shadow);
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      transform: translateY(-3px) scale(1.04);
+      box-shadow: 0 14px 30px var(--shadow);
+    }
+
+    button:active {
+      transform: scale(0.97);
+    }
+
+    #response {
+      margin-top: 20px;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--accent);
+      min-height: 30px;
+      animation: none;
+    }
+
+    .show-response {
+      animation: popIn 0.5s ease;
+    }
+
+    /* 📱 Mobile */
+    @media (max-width: 600px) {
+      body {
+        padding: 15px;
+      }
+
+      .card {
+        padding: 35px 22px;
+        border-radius: 24px;
+      }
+
+      .emoji {
+        font-size: 52px;
+      }
+
+      h1 {
+        font-size: 1.7rem;
+      }
+
+      p {
+        font-size: 0.98rem;
+      }
+
+      .music-toggle {
+        top: 12px;
+        right: 12px;
+        width: 46px;
+        height: 46px;
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 🎵 Music -->
+  <button
+    class="music-toggle"
+    id="musicBtn"
+    onclick="toggleMusic()"
+    aria-label="Хөгжим асаах/унтраах"
+  >
+    🔇
+  </button>
+
+  <!-- 💌 Main Card -->
+  <div class="card">
+
+    <div class="emoji">🥺💐</div>
+
+    <h1>Уучлаарай, хайраа </h1>
+
+    <p>
+      Би чамайг уурлуулсандаа маш их харамсаж байна.
+    </p>
+
+    <div class="msg-box">
+      “Чиний хамгийн сайхан инээмсэглэлийг үргэлж харах
+      нь надад үнэхээр чухал шүү. 💛”
+    </div>
+
+    <button onclick="showResponse()">
+      Уучилъя 💕
+    </button>
+
+    <div id="response"></div>
+
+  </div>
+
+  <script>
+
+    /* =========================
+       💕 Floating Hearts
+    ========================= */
+
+    const hearts = [
+      "💛",
+      "💕",
+      "🌸",
+      "💖",
+      "✨",
+      "💗",
+      "🌷"
+    ];
+
+    function spawnHeart() {
+
+      const h = document.createElement("div");
+
+      h.className = "heart";
+
+      h.textContent =
+        hearts[Math.floor(Math.random() * hearts.length)];
+
+      h.style.left =
+        Math.random() * 100 + "vw";
+
+      h.style.animationDuration =
+        (5 + Math.random() * 6) + "s";
+
+      h.style.fontSize =
+        (16 + Math.random() * 20) + "px";
+
+      document.body.appendChild(h);
+
+      setTimeout(() => {
+        h.remove();
+      }, 12000);
+    }
+
+    setInterval(spawnHeart, 500);
+
+    for (let i = 0; i < 10; i++) {
+      setTimeout(spawnHeart, i * 200);
+    }
+
+
+    /* =========================
+       💌 Response
+    ========================= */
+
+    const replies = [
+      "Баярлалаа, хайраа ✨💛",
+      "Чамдаа маш их хайртай шүү 🥺💕",
+      "Чиний инээмсэглэл надад хамгийн чухал 💛",
+      "Дахиж чамайгаа гомдоохгүй ээ 🌸",
+      "Хайртай шүү, 💖",
+      "Намайг уучилсанд баярлалаа 🥺💐",
+      "Чи минь хамгийн үнэтэй хүн шүү 💕"
+    ];
+
+    function showResponse() {
+
+      const box =
+        document.getElementById("response");
+
+      box.textContent =
+        replies[Math.floor(Math.random() * replies.length)];
+
+      box.classList.remove("show-response");
+
+      void box.offsetWidth;
+
+      box.classList.add("show-response");
+
+      burstSparkles();
+    }
+
+
+    /* =========================
+       ✨ Sparkles
+    ========================= */
+
+    const sparkleChars = [
+      "✨",
+      "⭐",
+      "💫",
+      "🌟"
+    ];
+
+    function spawnSparkle(x, y) {
+
+      const s = document.createElement("div");
+
+      s.className = "sparkle";
+
+      s.textContent =
+        sparkleChars[
+          Math.floor(Math.random() * sparkleChars.length)
+        ];
+
+      s.style.left =
+        (x != null
+          ? x
+          : Math.random() * 100) +
+        (x != null ? "px" : "vw");
+
+      s.style.top =
+        (y != null
+          ? y
+          : Math.random() * 100) +
+        (y != null ? "px" : "vh");
+
+      s.style.fontSize =
+        (12 + Math.random() * 16) + "px";
+
+      s.style.animationDelay =
+        (Math.random() * 0.6) + "s";
+
+      document.body.appendChild(s);
+
+      setTimeout(() => {
+        s.remove();
+      }, 2200);
+    }
+
+    setInterval(() => {
+      spawnSparkle();
+    }, 400);
+
+
+    /* =========================
+       ✨ Sparkle Burst
+    ========================= */
+
+    function burstSparkles() {
+
+      for (let i = 0; i < 18; i++) {
+
+        setTimeout(() => {
+
+          spawnSparkle(
+            window.innerWidth / 2 +
+            (Math.random() - 0.5) * 300,
+
+            window.innerHeight / 2 +
+            (Math.random() - 0.5) * 200
+          );
+
+        }, i * 40);
+      }
+    }
+
+
+    /* =========================
+       🎵 Background Music
+       Web Audio API
+    ========================= */
+
+    let audioCtx = null;
+    let musicPlaying = false;
+    let musicTimer = null;
+
+    const melody = [
+      523.25,
+      587.33,
+      659.25,
+      587.33,
+      523.25,
+      659.25,
+      783.99,
+      659.25,
+      587.33,
+      523.25,
+      493.88,
+      523.25,
+      659.25,
+      587.33,
+      523.25,
+      0
+    ];
+
+    let noteIndex = 0;
+
+
+    function playNote(freq) {
+
+      if (freq === 0) return;
+
+      const osc =
+        audioCtx.createOscillator();
+
+      const gain =
+        audioCtx.createGain();
+
+      osc.type = "sine";
+
+      osc.frequency.value = freq;
+
+      gain.gain.setValueAtTime(
+        0,
+        audioCtx.currentTime
+      );
+
+      gain.gain.linearRampToValueAtTime(
+        0.08,
+        audioCtx.currentTime + 0.05
+      );
+
+      gain.gain.exponentialRampToValueAtTime(
+        0.001,
+        audioCtx.currentTime + 0.55
+      );
+
+      osc.connect(gain);
+
+      gain.connect(
+        audioCtx.destination
+      );
+
+      osc.start();
+
+      osc.stop(
+        audioCtx.currentTime + 0.6
+      );
+    }
+
+
+    function scheduleMelody() {
+
+      playNote(
+        melody[noteIndex]
+      );
+
+      noteIndex =
+        (noteIndex + 1) %
+        melody.length;
+
+      musicTimer =
+        setTimeout(
+          scheduleMelody,
+          380
+        );
+    }
+
+
+    function toggleMusic() {
+
+      const btn =
+        document.getElementById("musicBtn");
+
+      if (!audioCtx) {
+
+        audioCtx =
+          new (
+            window.AudioContext ||
+            window.webkitAudioContext
+          )();
+      }
+
+      if (musicPlaying) {
+
+        clearTimeout(musicTimer);
+
+        musicPlaying = false;
+
+        btn.textContent = "🔇";
+
+        btn.classList.remove("playing");
+
+      } else {
+
+        if (
+          audioCtx.state === "suspended"
+        ) {
+          audioCtx.resume();
+        }
+
+        musicPlaying = true;
+
+        noteIndex = 0;
+
+        scheduleMelody();
+
+        btn.textContent = "🎵";
+
+        btn.classList.add("playing");
+      }
+    }
+
+  </script>
+
+</body>
+</html>
